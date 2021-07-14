@@ -1,0 +1,11 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: provider-demo
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        server-addr: ${NACOS_HOST:127.0.0.1}:8848
