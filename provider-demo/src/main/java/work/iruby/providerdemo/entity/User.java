@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString
-@ApiModel(value = "user", description = "用户实体")
+@ApiModel(value = "用户", description = "用户实体")
 public class User extends BaseEntity {
 
     @NotBlank(message = "firstName 不得为空")
@@ -30,10 +30,10 @@ public class User extends BaseEntity {
     @ApiModelProperty(value = "邮箱", example = "ruby@qq.com")
     private String email;
 
-    @ApiModelProperty(value = "挚友" , dataType = "object")
+    @ApiModelProperty(value = "挚友" , dataType = "Friend")
     private Friend realFriend;
 
-    @ApiModelProperty(value = "好友" , dataType = "Lwork.iruby.providerdemo.entity.Friend;")
+    @ApiModelProperty(value = "好友" , dataType = "Friend")
     private List<Friend> friends;
 
 }

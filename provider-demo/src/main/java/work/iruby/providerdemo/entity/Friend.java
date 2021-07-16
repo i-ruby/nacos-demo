@@ -1,5 +1,6 @@
 package work.iruby.providerdemo.entity;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import lombok.Data;
  * @since 2021/7/15
  */
 @Data
+@ApiModel(value = "友人", reference = "Friend")
 public class Friend {
 
     @ApiModelProperty(value = "名字")

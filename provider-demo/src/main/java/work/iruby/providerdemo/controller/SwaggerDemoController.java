@@ -1,6 +1,8 @@
 package work.iruby.providerdemo.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,14 +26,23 @@ public class SwaggerDemoController {
 
 
     @ApiOperation(value = "增加用户")
-    @RequestMapping(value = "/User", method = RequestMethod.PUT)
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "Long"),
+            @ApiImplicitParam(name = "firstName", value = "名字", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "age", value = "年龄", required = true, dataType = "Integer"),
+            @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "String")
+//            @ApiImplicitParam(name = "realFriend", value = "挚友", required = false, dataType = "Friend"),
+//            @ApiImplicitParam(name = "friends", value = "好友", required = false, dataType = "List")
+    })
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
     public User addUser(@Valid @RequestBody User user) {
         System.out.println("增加用户");
+
         return user;
     }
 
     @ApiOperation(value = "删除用户")
-    @RequestMapping(value = "/User/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     public User deleteUser(@PathVariable("id") Long id) {
         System.out.println("删除用户");
         User user = new User();
@@ -43,14 +54,14 @@ public class SwaggerDemoController {
     }
 
     @ApiOperation(value = "修改用户")
-    @RequestMapping(value = "/User", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/user", method = RequestMethod.PATCH)
     public User updateUser(@Valid @RequestBody User user) {
         System.out.println("修改用户");
         return user;
     }
 
     @ApiOperation(value = "根据id查询用户信息")
-    @RequestMapping(value = "/User/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public User getUserById(@PathVariable(name = "id") Long id) {
         System.out.println(id);
         User user = new User();
