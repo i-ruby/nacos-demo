@@ -1,0 +1,12 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: provider-demo
+  cloud:
+    nacos:
+      config:
+        server-addr: ${REMOTE_HOST}:8848
+        file-extension: yml
+      discovery:
+        server-addr: ${REMOTE_HOST}:8848
