@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 @RefreshScope
 public class NacosConfig {
 
-    @Value("${user.name:zz}")
+    @Value("${user.name}")
     String userName;
 
-    @Value("${user.age:25}")
+    @Value("${user.age}")
     Integer age;
 }

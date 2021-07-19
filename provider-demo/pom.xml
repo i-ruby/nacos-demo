@@ -10,18 +10,16 @@
 
     <artifactId>provider-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Spring Cloud Starter Alibaba Nacos Config Example</name>
+    <name>provider-demo</name>
 
     <dependencies>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>2021.1</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>2021.1</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
