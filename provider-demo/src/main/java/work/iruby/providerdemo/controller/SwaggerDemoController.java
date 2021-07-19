@@ -5,10 +5,14 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import work.iruby.providerdemo.config.NacosConfig;
 import work.iruby.providerdemo.entity.User;
 
 import javax.validation.Valid;
@@ -20,17 +24,25 @@ import javax.validation.Valid;
 @Api(value = "user", tags = "用户管理模块")
 @RestController
 public class SwaggerDemoController {
+
+    private final NacosConfig nacosConfig;
+
+    public SwaggerDemoController(NacosConfig nacosConfig) {
+        this.nacosConfig = nacosConfig;
+    }
+
     @RequestMapping(value = "/custom", method = RequestMethod.GET)
-    public void custom() {
+    public String custom() {
+        return nacosConfig.getUserName() + "-" + nacosConfig.getAge();
     }
 
 
     @ApiOperation(value = "增加用户")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "firstName", value = "名字", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "age", value = "年龄", required = true, dataType = "Integer"),
-            @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "String")
+            @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "java.lang.Long"),
+            @ApiImplicitParam(name = "firstName", value = "名字", required = true, dataType = "java.lang.String"),
+            @ApiImplicitParam(name = "age", value = "年龄", required = true, dataType = "java.lang.Integer"),
+            @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "java.lang.String")
 //            @ApiImplicitParam(name = "realFriend", value = "挚友", required = false, dataType = "Friend"),
 //            @ApiImplicitParam(name = "friends", value = "好友", required = false, dataType = "List")
     })
