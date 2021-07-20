@@ -1,0 +1,25 @@
+version: "3"
+services:
+  redis:
+    image: "redis:6.2-alpine"
+    container_name: "redis"
+    restart: always
+    ports:
+    - 6379:6379
+    volumes:
+      - "db-redis:/data"
+  mysql:
+    image: "mysql:5.7"
+    container_name: "mysql"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+    - 3306:3306
+    volumes:
+      - "db-mysql:/data"
+
+volumes:
+  "db-redis": {}
+  "db-mysql": {}
